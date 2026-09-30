@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="320">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap');
+      .title-font { font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; }
+      .mono-font { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <!-- ================= LIGHT THEME PANEL ================= -->
+  <rect x="0" y="0" width="400" height="320" fill="#EFEAE0"/>
+  
+  <!-- Subtle Grid lines -->
+  <line x1="40" y1="40" x2="360" y2="40" stroke="#CFC7B3" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+  <line x1="40" y1="280" x2="360" y2="280" stroke="#CFC7B3" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+  <line x1="40" y1="40" x2="40" y2="280" stroke="#CFC7B3" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+  <line x1="360" y1="40" x2="360" y2="280" stroke="#CFC7B3" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+
+  <!-- Theme Tag -->
+  <text x="50" y="70" class="mono-font" font-size="10" letter-spacing="2" fill="rgba(23,22,26,0.45)">[ MODE // LIGHT_PAPER ]</text>
+
+  <!-- LOGO 1 GROUP (LIGHT) -->
+  <g transform="translate(68, 118)">
+    <!-- Outer dashed boundary frame -->
+    <rect x="0.5" y="0.5" width="75" height="75" fill="none" stroke="#17161A" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+    
+    <!-- Crosshairs on edges -->
+    <path d="M38 0 V-6 M38 76 V82 M0 38 H-6 M76 38 H82" stroke="#17161A" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Corner marks -->
+    <path d="M-4 6 H0 V-4 H10 M66 -4 H76 V6 M76 70 V80 H66 M10 80 H0 V70" stroke="#17161A" stroke-width="1" fill="none" opacity="0.5"/>
+
+    <!-- Geometric 'A' Mark -->
+    <polygon points="38,15 17,58 27,58 32,48 44,48 49,58 59,58" fill="#17161A"/>
+    <!-- Triangle cutout inside 'A' -->
+    <polygon points="38,27 34,41 42,41" fill="#EFEAE0"/>
+
+    <!-- Accent calibration dot (Rust) -->
+    <circle cx="38" cy="15" r="3.5" fill="#C1432B"/>
+
+    <!-- Wordmark & Technical Details -->
+    <text x="96" y="38" class="title-font" font-size="28" letter-spacing="5" fill="#17161A">ADULTERA</text>
+    <text x="98" y="56" class="mono-font" font-size="10.5" font-weight="600" letter-spacing="2.5" fill="#1B3A63">CORE // SPEC.01</text>
+    <text x="98" y="70" class="mono-font" font-size="9" letter-spacing="1.5" fill="rgba(23,22,26,0.45)">LATENCY: 0.18ms • STATUS: ACTIVE</text>
+  </g>
+
+
+  <!-- ================= DARK THEME PANEL ================= -->
+  <rect x="400" y="0" width="400" height="320" fill="#0D0D0E"/>
+  
+  <!-- Subtle Grid lines -->
+  <line x1="440" y1="40" x2="760" y2="40" stroke="#2C2B2A" stroke-width="1" stroke-dasharray="4 4" opacity="0.8"/>
+  <line x1="440" y1="280" x2="760" y2="280" stroke="#2C2B2A" stroke-width="1" stroke-dasharray="4 4" opacity="0.8"/>
+  <line x1="440" y1="40" x2="440" y2="280" stroke="#2C2B2A" stroke-width="1" stroke-dasharray="4 4" opacity="0.8"/>
+  <line x1="760" y1="40" x2="760" y2="280" stroke="#2C2B2A" stroke-width="1" stroke-dasharray="4 4" opacity="0.8"/>
+
+  <!-- Theme Tag -->
+  <text x="450" y="70" class="mono-font" font-size="10" letter-spacing="2" fill="rgba(239,234,224,0.35)">[ MODE // DARK_VOID ]</text>
+
+  <!-- LOGO 2 GROUP (DARK) -->
+  <g transform="translate(468, 118)">
+    <!-- Outer dashed boundary frame -->
+    <rect x="0.5" y="0.5" width="75" height="75" fill="none" stroke="#EFEAE0" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+    
+    <!-- Crosshairs on edges -->
+    <path d="M38 0 V-6 M38 76 V82 M0 38 H-6 M76 38 H82" stroke="#EFEAE0" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Corner marks -->
+    <path d="M-4 6 H0 V-4 H10 M66 -4 H76 V6 M76 70 V80 H66 M10 80 H0 V70" stroke="#EFEAE0" stroke-width="1" fill="none" opacity="0.4"/>
+
+    <!-- Geometric 'A' Mark -->
+    <polygon points="38,15 17,58 27,58 32,48 44,48 49,58 59,58" fill="#EFEAE0"/>
+    <!-- Triangle cutout inside 'A' -->
+    <polygon points="38,27 34,41 42,41" fill="#0D0D0E"/>
+
+    <!-- Accent calibration dot (Rust Light) -->
+    <circle cx="38" cy="15" r="3.5" fill="#D9694C"/>
+
+    <!-- Wordmark & Technical Details -->
+    <text x="96" y="38" class="title-font" font-size="28" letter-spacing="5" fill="#EFEAE0">ADULTERA</text>
+    <text x="98" y="56" class="mono-font" font-size="10.5" font-weight="600" letter-spacing="2.5" fill="#2E5B98">CORE // SPEC.01</text>
+    <text x="98" y="70" class="mono-font" font-size="9" letter-spacing="1.5" fill="rgba(239,234,224,0.4)">LATENCY: 0.18ms • STATUS: ACTIVE</text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="400" y1="0" x2="400" y2="320" stroke="#2C2B2A" stroke-width="1"/>
+</svg>
