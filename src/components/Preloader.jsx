@@ -6,11 +6,11 @@ const CUTOUT_PATH = 'M18 13 16.5 19 19.5 19';
 export default function Preloader({ onComplete }) {
   const [phase, setPhase] = useState('draw');
   const [visible, setVisible] = useState(true);
-  const overlayRef = useRef(null);
   const pathRef = useRef(null);
   const cutoutRef = useRef(null);
   const dotRef = useRef(null);
   const glowRef = useRef(null);
+  const bloomRef = useRef(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -22,8 +22,8 @@ export default function Preloader({ onComplete }) {
         setTimeout(() => {
           setVisible(false);
           onComplete?.();
-        }, 600);
-      }, 400);
+        }, 400);
+      }, 300);
       return () => clearTimeout(timer);
     }
 
@@ -31,8 +31,9 @@ export default function Preloader({ onComplete }) {
     const cutout = cutoutRef.current;
     const dot = dotRef.current;
     const glow = glowRef.current;
+    const bloom = bloomRef.current;
 
-    if (!path || !cutout || !dot || !glow) return;
+    if (!path || !cutout || !dot || !glow || !bloom) return;
 
     const pathLength = path.getTotalLength();
     const cutoutLength = cutout.getTotalLength();
@@ -43,37 +44,40 @@ export default function Preloader({ onComplete }) {
     cutout.style.strokeDashoffset = `${cutoutLength}`;
     dot.style.opacity = '0';
     glow.style.opacity = '0';
+    bloom.style.opacity = '0';
 
+    let rafId;
     const tl = { start: null };
 
     const animate = (timestamp) => {
       if (!tl.start) tl.start = timestamp;
       const elapsed = timestamp - tl.start;
 
-      const drawStart = 200;
-      const drawDuration = 1800;
+      const drawStart = 300;
+      const drawDuration = 1600;
       const drawProgress = Math.min(Math.max((elapsed - drawStart) / drawDuration, 0), 1);
       const easedDraw = 1 - Math.pow(1 - drawProgress, 3);
 
       path.style.strokeDashoffset = `${pathLength * (1 - easedDraw)}`;
 
       const glowProgress = Math.min(Math.max((elapsed - drawStart) / drawDuration, 0), 1);
-      glow.style.opacity = `${glowProgress * 0.3}`;
+      glow.style.opacity = `${glowProgress * 0.25}`;
+      bloom.style.opacity = `${glowProgress * 0.1}`;
 
-      const cutoutStart = drawStart + drawDuration * 0.6;
-      const cutoutDuration = 600;
+      const cutoutStart = drawStart + drawDuration * 0.55;
+      const cutoutDuration = 500;
       const cutoutProgress = Math.min(Math.max((elapsed - cutoutStart) / cutoutDuration, 0), 1);
       const easedCutout = 1 - Math.pow(1 - cutoutProgress, 3);
       cutout.style.strokeDashoffset = `${cutoutLength * (1 - easedCutout)}`;
 
-      const dotStart = cutoutStart + cutoutDuration * 0.5;
-      const dotDuration = 400;
+      const dotStart = cutoutStart + cutoutDuration * 0.4;
+      const dotDuration = 350;
       const dotProgress = Math.min(Math.max((elapsed - dotStart) / dotDuration, 0), 1);
       const easedDot = 1 - Math.pow(1 - dotProgress, 2);
       dot.style.opacity = `${easedDot}`;
 
-      if (elapsed < 3200) {
-        requestAnimationFrame(animate);
+      if (elapsed < 3400) {
+        rafId = requestAnimationFrame(animate);
       } else {
         setPhase('hold');
         setTimeout(() => {
@@ -81,12 +85,13 @@ export default function Preloader({ onComplete }) {
           setTimeout(() => {
             setVisible(false);
             onComplete?.();
-          }, 800);
-        }, 400);
+          }, 900);
+        }, 500);
       }
     };
 
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, [onComplete]);
 
   if (!visible) return null;
@@ -95,11 +100,10 @@ export default function Preloader({ onComplete }) {
 
   return (
     <div
-      ref={overlayRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
       style={{
         opacity: isExiting ? 0 : 1,
-        transition: isExiting ? 'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1)' : 'none',
+        transition: isExiting ? 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1)' : 'none',
         pointerEvents: isExiting ? 'none' : 'all',
       }}
       aria-hidden="true"
@@ -107,19 +111,26 @@ export default function Preloader({ onComplete }) {
       <div
         className="relative"
         style={{
-          width: 'clamp(70px, 12vw, 140px)',
-          height: 'clamp(70px, 12vw, 140px)',
-          transform: isExiting ? 'scale(0.95)' : 'scale(1)',
-          transition: 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
+          width: 'clamp(80px, 14vw, 150px)',
+          height: 'clamp(80px, 14vw, 150px)',
+          transform: isExiting ? 'scale(0.92)' : 'scale(1)',
+          transition: 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       >
         <div
+          ref={bloomRef}
+          className="absolute inset-0"
+          style={{ filter: 'blur(30px)', opacity: 0 }}
+        >
+          <svg viewBox="0 0 36 36" className="w-full h-full">
+            <path d={LOGO_PATH} fill="white" />
+          </svg>
+        </div>
+
+        <div
           ref={glowRef}
           className="absolute inset-0"
-          style={{
-            filter: 'blur(20px)',
-            opacity: 0,
-          }}
+          style={{ filter: 'blur(12px)', opacity: 0 }}
         >
           <svg viewBox="0 0 36 36" className="w-full h-full">
             <path d={LOGO_PATH} fill="white" />
@@ -129,14 +140,14 @@ export default function Preloader({ onComplete }) {
         <svg
           viewBox="0 0 36 36"
           className="w-full h-full relative"
-          style={{ filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.4))' }}
+          style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.5))' }}
         >
           <path
             ref={pathRef}
             d={LOGO_PATH}
             fill="none"
             stroke="white"
-            strokeWidth="1.5"
+            strokeWidth="1.2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -145,7 +156,7 @@ export default function Preloader({ onComplete }) {
             d={CUTOUT_PATH}
             fill="none"
             stroke="black"
-            strokeWidth="1.5"
+            strokeWidth="1.2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -162,8 +173,8 @@ export default function Preloader({ onComplete }) {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            opacity: phase === 'hold' ? 1 : 0,
-            transition: 'opacity 0.4s ease',
+            opacity: phase === 'hold' || isExiting ? 1 : 0,
+            transition: 'opacity 0.5s ease',
           }}
         >
           <svg viewBox="0 0 36 36" className="w-full h-full">

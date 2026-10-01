@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Layout from './components/Layout';
+import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import TestLibrary from './pages/TestLibrary';
 import TestDetail from './pages/TestDetail';
@@ -31,6 +32,7 @@ function getRoute(path) {
 
 export default function App() {
   const [path, setPath] = useState(window.location.hash.slice(1) || '/');
+  const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -48,8 +50,11 @@ export default function App() {
   const { component: PageComponent, props } = getRoute(path);
 
   return (
-    <Layout navigate={navigate} currentPath={path}>
-      <PageComponent navigate={navigate} {...props} />
-    </Layout  >
+    <>
+      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      <Layout navigate={navigate} currentPath={path}>
+        <PageComponent navigate={navigate} {...props} />
+      </Layout>
+    </>
   );
 }

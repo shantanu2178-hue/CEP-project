@@ -1,303 +1,299 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
-     :root {
-        --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-        --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-    html {
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
-    body {
-        @apply bg-surface-50 text-surface-900 antialiased;
-        font-family: var(--font-sans);
-    }
-    .mono {
-        font-family: var(--font-mono);
-    }
-    .label {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.20em;
-        white-space: nowrap;
-    }
-    .tabular {
-        font-family: var(--font-mono);
-        font-variant-numeric: tabular-nums;
-    }
-    h1 {
-        font-family: var(--font-sans);
-        font-size: clamp(38px, 6vw, 58px);
-        font-weight: 600;
-        line-height: 1.08;
-        letter-spacing: -0.01em;
-    }
-    h2,
-    h3 {
-        font-family: var(--font-sans);
-        font-size: clamp(24px, 4vw, 36px);
-        font-weight: 600;
-        line-height: 1.2;
-    }
-    p {
-        font-family: var(--font-sans);
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.6;
-    }
-     ::selection {
-        @apply bg-brand-200 text-brand-900;
-    }
-     ::-webkit-scrollbar {
-        width: 6px;
-    }
-     ::-webkit-scrollbar-track {
-        @apply bg-surface-100;
-    }
-     ::-webkit-scrollbar-thumb {
-        @apply bg-surface-300 rounded-full;
-    }
-     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-surface-400;
-    }
+  :root {
+    --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-surface-50 text-surface-900 antialiased;
+    font-family: var(--font-sans);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.20em;
+    white-space: nowrap;
+  }
+
+  .tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  h2, h3 {
+    font-family: var(--font-sans);
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-400;
+  }
 }
 
 @layer components {
-    .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-700 text-white rounded-lg hover: bg-brand-600 active: bg-brand-800 focus: outline-none focus: ring-2 focus: ring-brand-500 focus: ring-offset-2 disabled: opacity-50 disabled: cursor-not-allowed cursor-pointer shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32, 0.72, 0, 1)] active: scale-[0.97];
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-    }
-    .btn-secondary {
-        @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-surface-700 rounded-lg border border-surface-200 hover: bg-surface-50 hover: border-surface-300 active: bg-surface-100 focus: outline-none focus: ring-2 focus: ring-brand-500 focus: ring-offset-2 disabled: opacity-50 disabled: cursor-not-allowed cursor-pointer shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32, 0.72, 0, 1)] active: scale-[0.97];
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-    }
-    .btn-danger {
-        @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-danger-600 text-white rounded-lg hover: bg-danger-500 active: bg-danger-700 focus: outline-none focus: ring-2 focus: ring-danger-500 focus: ring-offset-2 disabled: opacity-50 disabled: cursor-not-allowed cursor-pointer shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32, 0.72, 0, 1)] active: scale-[0.97];
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-    }
-    .btn-ghost {
-        @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-surface-600 rounded-lg hover: text-surface-900 hover: bg-surface-100 focus: outline-none focus: ring-2 focus: ring-brand-500 cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.32, 0.72, 0, 1)] active: scale-[0.97];
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-    }
-    .card {
-        @apply bg-white border border-surface-200 rounded-xl p-5 shadow-[0_1px_3px_rgba(0,
-        0,
-        0,
-        0.04),
-        0_1px_2px_rgba(0,
-        0,
-        0,
-        0.06)] hover: shadow-[0_4px_12px_rgba(0, 0, 0, 0.08), 0_2px_4px_rgba(0, 0, 0, 0.04)] transition-all duration-300 ease-[cubic-bezier(0.32, 0.72, 0, 1)];
-    }
-    .card-interactive {
-        @apply card cursor-pointer hover: border-brand-300;
-    }
-    .click-pop {
-        animation: popIn 0.3s ease-[cubic-bezier(0.32, 0.72, 0, 1)];
-    }
-    .input-field {
-        @apply w-full px-3.5 py-2.5 bg-white border border-surface-300 rounded-lg text-surface-900 placeholder: text-surface-400 focus: outline-none focus: ring-2 focus: ring-brand-500 focus: border-brand-500 transition-all duration-200;
-        font-family: var(--font-mono);
-        font-size: 14px;
-    }
-    .input-label {
-        @apply block text-sm font-medium text-surface-700 mb-1.5;
-    }
-    .badge {
-        @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
-    }
-    .badge-critical {
-        @apply badge bg-danger-100 text-danger-700;
-    }
-    .badge-high {
-        @apply badge bg-warning-100 text-warning-700;
-    }
-    .badge-moderate {
-        @apply badge bg-brand-100 text-brand-700;
-    }
-    .badge-low {
-        @apply badge bg-success-100 text-success-700;
-    }
-    .badge-neutral {
-        @apply badge bg-surface-100 text-surface-600;
-    }
-    .badge-success {
-        @apply badge bg-success-100 text-success-700;
-    }
-    .badge-warning {
-        @apply badge bg-warning-100 text-warning-700;
-    }
-    .badge-danger {
-        @apply badge bg-danger-100 text-danger-700;
-    }
-    .section-divider {
-        @apply border-t border-surface-200;
-    }
-    .disclaimer-banner {
-        @apply bg-surface-100 text-surface-600 border-t border-surface-200 px-4 py-2 text-center text-sm;
-    }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-700 text-white rounded-lg shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .btn-primary:hover {
+    @apply bg-brand-600;
+  }
+
+  .btn-primary:active {
+    @apply bg-brand-800 scale-[0.97];
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-surface-700 rounded-lg border border-surface-200 shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-surface-50 border-surface-300;
+  }
+
+  .btn-secondary:active {
+    @apply bg-surface-100 scale-[0.97];
+  }
+
+  .btn-secondary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-danger-600 text-white rounded-lg shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .btn-danger:hover {
+    @apply bg-danger-500;
+  }
+
+  .btn-danger:active {
+    @apply bg-danger-700 scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-surface-600 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .btn-ghost:hover {
+    @apply text-surface-900 bg-surface-100;
+  }
+
+  .btn-ghost:active {
+    @apply scale-[0.97];
+  }
+
+  .card {
+    @apply bg-white border border-surface-200 rounded-xl p-5 shadow-sm transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)];
+  }
+
+  .card:hover {
+    @apply shadow-md;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer;
+  }
+
+  .card-interactive:hover {
+    @apply border-brand-300 -translate-y-0.5;
+  }
+
+  .input-field {
+    @apply w-full px-3.5 py-2.5 bg-white border border-surface-300 rounded-lg text-surface-900 transition-all duration-200;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .input-field::placeholder {
+    @apply text-surface-400;
+  }
+
+  .input-field:focus {
+    @apply outline-none ring-2 ring-brand-500 border-brand-500;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-surface-700 mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-critical {
+    @apply badge bg-danger-100 text-danger-700;
+  }
+
+  .badge-high {
+    @apply badge bg-warning-100 text-warning-700;
+  }
+
+  .badge-moderate {
+    @apply badge bg-brand-100 text-brand-700;
+  }
+
+  .badge-low {
+    @apply badge bg-success-100 text-success-700;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface-100 text-surface-600;
+  }
+
+  .badge-success {
+    @apply badge bg-success-100 text-success-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-100 text-warning-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-100 text-danger-700;
+  }
+
+  .section-divider {
+    @apply border-t border-surface-200;
+  }
+
+  .disclaimer-banner {
+    @apply bg-surface-100 text-surface-600 border-t border-surface-200 px-4 py-2 text-center text-sm;
+  }
 }
 
 @layer utilities {
-    .animate-delay-100 {
-        animation-delay: 100ms;
-    }
-    .animate-delay-200 {
-        animation-delay: 200ms;
-    }
-    .animate-delay-300 {
-        animation-delay: 300ms;
-    }
-    .animate-delay-400 {
-        animation-delay: 400ms;
-    }
-    .animate-delay-500 {
-        animation-delay: 500ms;
-    }
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-4px);
-    }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 @keyframes pulse-soft {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 @keyframes pageEnter {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pageExit {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
 }
 
 @keyframes popIn {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.95);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes ripple {
-    0% {
-        transform: scale(0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(4);
-        opacity: 0;
-    }
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.001ms !important;
-        transition-duration: 0.001ms !important;
-    }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
