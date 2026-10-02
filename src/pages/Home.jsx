@@ -43,73 +43,90 @@ export default function Home({ navigate }) {
   return (
     <div>
       {/* Hero */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6 text-left">
-            <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase animate-fade-up">
-              Food Safety / Evidence System
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight animate-fade-up-delay-1">
-              Turn suspicion into evidence.
-            </h1>
-            <p className="text-lg text-slate-600 max-w-xl leading-relaxed animate-fade-up-delay-2">
-              ADULTERA helps you perform preliminary food-adulteration tests, understand results, organize evidence, and identify community patterns.
-            </p>
-            <div className="flex flex-wrap items-center gap-4 pt-2 animate-fade-up-delay-3">
-              <button onClick={() => navigate('/tests')} className="inline-flex items-center gap-2 bg-[#0284c7] hover:bg-[#0369a1] text-white font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-lg active:scale-[0.97]">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-                Test a Food
-              </button>
-              <button onClick={() => navigate('/tests')} className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md active:scale-[0.97]">
-                Explore Test Library
-              </button>
+      <section className="relative w-full overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          style={{ pointerEvents: 'none' }}
+        >
+          <source src="/assets/hero-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <p className="text-xs font-semibold tracking-widest text-white/70 uppercase animate-fade-up">
+                Food Safety / Evidence System
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight animate-fade-up-delay-1">
+                Turn suspicion into evidence.
+              </h1>
+              <p className="text-lg text-white/80 max-w-xl leading-relaxed animate-fade-up-delay-2">
+                ADULTERA helps you perform preliminary food-adulteration tests, understand results, organize evidence, and identify community patterns.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2 animate-fade-up-delay-3">
+                <button onClick={() => navigate('/tests')} className="inline-flex items-center gap-2 bg-[#0284c7] hover:bg-[#0369a1] text-white font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-lg active:scale-[0.97]">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                  Test a Food
+                </button>
+                <button onClick={() => navigate('/tests')} className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md active:scale-[0.97]">
+                  Explore Test Library
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up-delay-2">
-            <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl p-6 relative animate-float">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">
-                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                  ACTIVE SCREENING
-                </span>
-                <span className="text-xs font-mono text-slate-400">#ADL-2026-0482</span>
-              </div>
-              <div className="space-y-1 mb-4 text-left">
-                <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Target Sample</p>
-                <h3 className="text-base font-bold text-slate-800">Fresh Cow Milk (500ml)</h3>
-                <p className="text-xs text-slate-500">Test: Iodine Colorimetric Assay</p>
-              </div>
-              <div className="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100 mb-4">
-                <div className="text-center p-2.5 rounded-lg bg-white border border-slate-200 shadow-sm">
-                  <div className="w-full h-14 rounded-md bg-slate-100 flex items-center justify-center text-slate-400 text-xs font-medium border border-dashed border-slate-300">
-                    Control Sample
+            <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up-delay-2">
+              <div className="w-full max-w-md rounded-2xl p-6 relative animate-float" style={{ background: 'rgba(10, 20, 25, 0.35)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)' }}>
+                <div className="absolute inset-0 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%)', pointerEvents: 'none' }}></div>
+                <div className="relative">
+                  <div className="flex items-center justify-between pb-3 mb-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: 'rgba(193, 67, 43, 0.12)', color: '#D9694C', border: '1px solid rgba(193, 67, 43, 0.25)' }}>
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#C1432B' }}></span>
+                      ACTIVE SCREENING
+                    </span>
+                    <span className="text-xs font-mono" style={{ color: 'rgba(255,255,255,0.3)' }}>#ADL-2026-0482</span>
                   </div>
-                  <p className="text-[11px] font-medium text-slate-500 mt-2">No Color Shift</p>
-                </div>
-                <div className="text-center p-2.5 rounded-lg bg-slate-900 border border-slate-800 shadow-sm">
-                  <div className="w-full h-14 rounded-md bg-gradient-to-br from-indigo-900 via-sky-900 to-sky-600 flex items-center justify-center text-sky-200 text-xs font-bold shadow-inner">
-                    Blue-Black Shift
+                  <div className="space-y-1 mb-4 text-left">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: 'rgba(255,255,255,0.35)' }}>Target Sample</p>
+                    <h3 className="text-base font-bold" style={{ color: 'rgba(255,255,255,0.95)' }}>Fresh Cow Milk (500ml)</h3>
+                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>Test: Iodine Colorimetric Assay</p>
                   </div>
-                  <p className="text-[11px] font-semibold text-sky-400 mt-2">Starch Detected</p>
+                  <div className="grid grid-cols-2 gap-3 p-3 rounded-xl mb-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div className="text-center p-2.5 rounded-lg" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div className="w-full h-14 rounded-md flex items-center justify-center text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', border: '1px dashed rgba(255,255,255,0.15)' }}>
+                        Control Sample
+                      </div>
+                      <p className="text-[11px] font-medium mt-2" style={{ color: 'rgba(255,255,255,0.45)' }}>No Color Shift</p>
+                    </div>
+                    <div className="text-center p-2.5 rounded-lg" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div className="w-full h-14 rounded-md flex items-center justify-center text-xs font-bold" style={{ background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.8), rgba(12, 74, 110, 0.8), rgba(2, 132, 199, 0.8))', color: '#7dd3fc' }}>
+                        Blue-Black Shift
+                      </div>
+                      <p className="text-[11px] font-semibold mt-2" style={{ color: '#38bdf8' }}>Starch Detected</p>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 mb-4 text-left">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="font-medium" style={{ color: 'rgba(255,255,255,0.5)' }}>Confidence Match</span>
+                      <span className="font-extrabold" style={{ color: '#38bdf8' }}>91%</span>
+                    </div>
+                    <div className="w-full rounded-full h-2 overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                      <div className="h-2 rounded-full" style={{ width: '91%', background: '#0284c7' }}></div>
+                    </div>
+                  </div>
+                  <div className="pt-3 flex items-center justify-between text-[11px]" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.3)' }}>
+                    <span>Heuristic color detection</span>
+                    <span className="font-semibold flex items-center gap-1" style={{ color: '#4ade80' }}>
+                      ✓ Evidence Saved
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-1.5 mb-4 text-left">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-600 font-medium">Confidence Match</span>
-                  <span className="font-extrabold text-[#0284c7]">91%</span>
-                </div>
-                <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                  <div className="bg-[#0284c7] h-2 rounded-full" style={{ width: '91%' }}></div>
-                </div>
-              </div>
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                <span>Heuristic color detection</span>
-                <span className="text-emerald-600 font-semibold flex items-center gap-1">
-                  ✓ Evidence Saved
-                </span>
               </div>
             </div>
           </div>

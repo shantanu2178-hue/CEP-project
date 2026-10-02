@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, FlaskConical, Map, Database, AlertTriangle, Calculator, Settings, Home } from 'lucide-react';
 
 const navLinks = [
@@ -13,6 +13,14 @@ const navLinks = [
 
 export default function Layout({ children, navigate, currentPath }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isHero = currentPath === '/' && !scrolled;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleNav = (path) => {
     navigate(path);
@@ -21,7 +29,34 @@ export default function Layout({ children, navigate, currentPath }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-surface-50">
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-surface-200">
+      <header
+        className="sticky top-0 z-40 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={
+          isHero
+            ? {
+                background: 'rgba(15, 23, 42, 0.45)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+              }
+            : scrolled
+              ? {
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
+                }
+              : {
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
+                }
+        }
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button onClick={() => handleNav('/')} className="flex items-center gap-3 cursor-pointer group">
@@ -47,9 +82,13 @@ export default function Layout({ children, navigate, currentPath }) {
                   key={path}
                   onClick={() => handleNav(path)}
                   className={`px-3.5 py-2 text-xs font-medium rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer ${
-                    currentPath === path
-                      ? 'bg-brand-50 text-brand-700'
-                      : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
+                    isHero
+                      ? currentPath === path
+                        ? 'bg-white/15 text-white'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                      : currentPath === path
+                        ? 'bg-brand-50 text-brand-700'
+                        : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
                   }`}
                 >
                   {label}
