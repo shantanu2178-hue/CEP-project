@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Case {
+  id              String   @id
+  userId          String
+  userName        String
+  productName     String
+  brand           String
+  category        String
+  batchNumber     String
+  mfgDate         String?
+  expDate         String?
+  purchaseDate    String?
+  retailer        String?
+  location        Json?
+  testId          String?
+  testName        String?
+  finding         String?
+  confidence      Int      @default(85)
+  colorObserved   String?
+  reactionDetails Json?
+  evidence        Json?
+  status          String   @default("Reported")
+  riskScore       Int      @default(0)
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Config {
+  id              Int      @id @default(autoincrement())
+  clusterThreshold Int     @default(3)
+  minUniqueAreas  Int      @default(2)
+  weights         Json
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

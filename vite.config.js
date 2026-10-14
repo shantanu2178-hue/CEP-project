@@ -14,6 +14,9 @@ export default defineConfig({
         target: 'http://localhost:3001',
         changeOrigin: true
       }
+    },
+    define: {
+      'import.meta.env.VITE_MAPTILER_KEY': JSON.stringify(process.env.VITE_MAPTILER_KEY || '')
     }
   }
 });

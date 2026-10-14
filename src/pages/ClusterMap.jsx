@@ -53,7 +53,7 @@ export default function ClusterMap() {
       scrollWheelZoom: true,
     });
 
-    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=EHsw2KmbcIs39hcf5t1q', {
+    L.tileLayer(`https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${import.meta.env.VITE_MAPTILER_KEY || ''}`, {
       attribution: '&copy; <a href="https://www.maptiler.com/">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 18,
     }).addTo(map);
