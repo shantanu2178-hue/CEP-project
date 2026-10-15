@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import helmet from 'helter';
+import helmet from 'helmet';
 import multer from 'multer';
 import { PrismaClient } from '@prisma/client';
 import { put } from '@vercel/blob';
