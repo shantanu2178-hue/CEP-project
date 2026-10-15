@@ -531,7 +531,7 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
 
     const blob = await put(filename, req.file.buffer, {
       access: 'public',
-      token: process.env.BLOB_READ_WRITE_TOKEN
+      addRandomSuffix: false
     });
 
     res.json({ success: true, url: blob.url, filename });
