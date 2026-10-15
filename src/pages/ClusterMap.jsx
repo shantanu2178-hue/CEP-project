@@ -53,8 +53,16 @@ export default function ClusterMap() {
       scrollWheelZoom: true,
     });
 
-    L.tileLayer(`https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${import.meta.env.VITE_MAPTILER_KEY || ''}`, {
-      attribution: '&copy; <a href="https://www.maptiler.com/">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    const mapTilerKey = import.meta.env.VITE_MAPTILER_KEY;
+    const tileUrl = mapTilerKey
+      ? `https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${mapTilerKey}`
+      : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const attribution = mapTilerKey
+      ? '&copy; <a href="https://www.maptiler.com/">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+    L.tileLayer(tileUrl, {
+      attribution,
       maxZoom: 18,
     }).addTo(map);
 
