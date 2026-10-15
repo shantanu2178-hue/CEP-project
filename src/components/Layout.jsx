@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, FlaskConical, Map, Database, AlertTriangle, Calculator, Settings, Home } from 'lucide-react';
+import { Menu, X, FlaskConical, Map, Database, AlertTriangle, Calculator, Settings, Home, Scale } from 'lucide-react';
 
 const navLinks = [
   { path: '/', label: 'Home', icon: Home },
   { path: '/tests', label: 'Test Library', icon: FlaskConical },
+  { path: '/compliance', label: 'FSSAI Reference', icon: Scale },
   { path: '/report', label: 'Report Case', icon: AlertTriangle },
   { path: '/vault', label: 'Evidence Vault', icon: Database },
   { path: '/map', label: 'Risk Map', icon: Map },

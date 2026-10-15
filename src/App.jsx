@@ -9,10 +9,12 @@ import EvidenceVault from './pages/EvidenceVault';
 import ClusterMap from './pages/ClusterMap';
 import RiskCalculator from './pages/RiskCalculator';
 import AdminConfig from './pages/AdminConfig';
+import Compliance from './pages/Compliance';
 
 const routes = {
   '/': Home,
   '/tests': TestLibrary,
+  '/compliance': Compliance,
   '/test/:id': TestDetail,
   '/report': ReportCase,
   '/vault': EvidenceVault,

@@ -63,6 +63,7 @@ export const api = {
     getClusters: () => request('/clusters'),
     getRiskPreview: (body) => request('/risk-score/preview', { method: 'POST', body }),
     getConfig: () => request('/config'),
+    getFssaiReference: () => request('/fssai/reference'),
     updateConfig: (body) => request('/config', { method: 'POST', body }),
     resetDemo: () => request('/reset-demo', { method: 'POST' }),
     uploadFile: async (file) => {

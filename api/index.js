@@ -7,6 +7,7 @@ import { put } from '@vercel/blob';
 import path from 'path';
 import { standardTests } from '../server/data/tests.js';
 import { defaultSeedCases } from '../server/data/seedCases.js';
+import * as fssai from '../server/data/fssaiReference.js';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -547,6 +548,22 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
 app.use((err, req, res, next) => {
   console.error('[ADULTERA Server Error]', err.message);
   res.status(500).json({ success: false, error: 'Internal server error' });
+});
+
+app.get('/api/fssai/reference', (req, res) => {
+  res.json({
+    success: true,
+    data: {
+      framework: fssai.legalFramework,
+      penalties: fssai.penalties,
+      prohibitedSales: fssai.prohibitedSales,
+      colourRegulation: fssai.colourRegulation,
+      officialLabMethods: fssai.officialLabMethods,
+      surveyData: fssai.surveyData,
+      productStandards: fssai.productStandards,
+      sources: fssai.sources,
+    },
+  });
 });
 
 app.get('/api/health', (req, res) => {
